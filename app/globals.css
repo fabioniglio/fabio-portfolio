@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --magic-purple: 250 64 255; /* #fa40ff */
+  --electric-blue: 80 199 255; /* #50c7ff */
+  --magical-green: 72 255 167; /* #48ffa7 */
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 250 100% 63%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 195 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 160 100% 64%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 250 100% 63%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.magic-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 animate-gradient;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.glow {
+  box-shadow: 0 0 10px 2px rgba(var(--magic-purple), 0.3), 0 0 20px 4px rgba(var(--electric-blue), 0.2), 0 0 30px 6px
+    rgba(var(--magical-green), 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(var(--magic-purple), 0.7), 0 0 20px rgba(var(--electric-blue), 0.5), 0 0 30px
+    rgba(var(--magical-green), 0.3);
+}
+
+.cursor-none {
+  cursor: none;
+}
+
+.parallax-container {
+  perspective: 1000px;
+}
+
+.parallax-layer {
+  transform-style: preserve-3d;
+}
+

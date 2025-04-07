@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Sparkles, Code, Palette, Lightbulb } from "lucide-react"
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, Code, Palette, Lightbulb } from "lucide-react";
 
 export default function About() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
     <section ref={containerRef} className="py-20 relative overflow-hidden">
@@ -32,8 +32,8 @@ export default function About() {
             About <span className="magic-text">Me</span>
           </h2>
           <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
-            I'm a creative developer passionate about building magical digital experiences that blend art and
-            technology.
+            I'm a creative developer passionate about building magical digital
+            experiences that blend art and technology.
           </p>
         </motion.div>
 
@@ -55,8 +55,9 @@ export default function About() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Developer</h3>
                     <p className="text-gray-400">
-                      I craft clean, efficient code to bring creative ideas to life. Specializing in React, Three.js,
-                      and interactive web experiences.
+                      I craft clean, efficient code to bring creative ideas to
+                      life. Specializing in React, Three.js, and interactive web
+                      experiences.
                     </p>
                   </div>
                 </div>
@@ -81,8 +82,8 @@ export default function About() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Designer</h3>
                     <p className="text-gray-400">
-                      I create visually stunning interfaces with attention to detail, focusing on user experience and
-                      aesthetic appeal.
+                      I create visually stunning interfaces with attention to
+                      detail, focusing on user experience and aesthetic appeal.
                     </p>
                   </div>
                 </div>
@@ -107,7 +108,8 @@ export default function About() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Innovator</h3>
                     <p className="text-gray-400">
-                      I push boundaries by exploring new technologies and creative approaches to solve complex problems.
+                      I push boundaries by exploring new technologies and
+                      creative approaches to solve complex problems.
                     </p>
                   </div>
                 </div>
@@ -132,8 +134,8 @@ export default function About() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Magician</h3>
                     <p className="text-gray-400">
-                      I create digital magic through animations, interactions, and experiences that surprise and delight
-                      users.
+                      I create digital magic through animations, interactions,
+                      and experiences that surprise and delight users.
                     </p>
                   </div>
                 </div>
@@ -150,13 +152,20 @@ export default function About() {
           viewport={{ once: true }}
         >
           <p className="text-lg text-gray-300 leading-relaxed">
-            With over 5 years of experience in web development and digital design, I specialize in creating immersive,
-            interactive experiences that push the boundaries of what's possible on the web. My passion lies in the
-            intersection of code, design, and animation, where I can bring magical digital experiences to life.
+            Full Stack Developer with over 10 years of experience, including 9
+            years building robust Salesforce solutions and 2+ years crafting
+            modern web applications with React, Node.js, and cloud platforms. I
+            thrive at the intersection of performance and creativity—whether
+            it's architecting scalable enterprise systems or designing playful
+            personal projects like a React-based e-learning platform or an
+            AI-powered quiz app. I'm fluent across the stack, with hands-on
+            experience in AWS, GitHub Actions, and GCP. Currently diving deeper
+            into Next.js, Supabase, MongoDB, and the Daily API—tools that help
+            me turn complex ideas into seamless, interactive experiences on the
+            web.
           </p>
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
-

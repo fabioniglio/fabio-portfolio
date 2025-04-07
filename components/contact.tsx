@@ -1,45 +1,47 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormState((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormState({ name: "", email: "", message: "" })
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormState({ name: "", email: "", message: "" });
 
       // Reset success message after 5 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
-    }, 1500)
-  }
+        setIsSubmitted(false);
+      }, 5000);
+    }, 1500);
+  };
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -57,7 +59,8 @@ export default function Contact() {
             Contact <span className="magic-text">Me</span>
           </h2>
           <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
-            Let's create something magical together. Reach out and let's start a conversation.
+            Let's create something magical together. Reach out and let's start a
+            conversation.
           </p>
         </motion.div>
 
@@ -68,11 +71,15 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-electricBlue">Get in Touch</h3>
+            <h3 className="text-2xl font-bold mb-6 text-electricBlue">
+              Get in Touch
+            </h3>
 
             <p className="text-gray-300 mb-8 leading-relaxed">
-              I'm always open to new opportunities, collaborations, or just a friendly chat about web development,
-              design, or digital magic. Feel free to reach out through the form or connect with me on social media.
+              I'm always open to new opportunities, collaborations, or just a
+              friendly chat about web development, design, or digital magic.
+              Feel free to reach out through the form or connect with me on
+              social media.
             </p>
 
             <div className="space-y-6">
@@ -86,7 +93,7 @@ export default function Contact() {
                     href="mailto:hello@example.com"
                     className="text-gray-400 hover:text-electricBlue transition-colors"
                   >
-                    hello@example.com
+                    fabioniglio@gmail.com
                   </a>
                 </div>
               </div>
@@ -98,12 +105,12 @@ export default function Contact() {
                 <div>
                   <h4 className="text-lg font-medium">LinkedIn</h4>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/fabioniglio/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-electricBlue transition-colors"
                   >
-                    linkedin.com/in/janedoe
+                    linkedin.com/in/fabioniglio
                   </a>
                 </div>
               </div>
@@ -115,12 +122,12 @@ export default function Contact() {
                 <div>
                   <h4 className="text-lg font-medium">GitHub</h4>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/fabioniglio"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-electricBlue transition-colors"
                   >
-                    github.com/janedoe
+                    github.com/fabioniglio
                   </a>
                 </div>
               </div>
@@ -132,12 +139,12 @@ export default function Contact() {
                 <div>
                   <h4 className="text-lg font-medium">Twitter</h4>
                   <a
-                    href="https://twitter.com"
+                    href="https://x.com/fabio_niglio"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-electricBlue transition-colors"
                   >
-                    twitter.com/janedoe
+                    x.com/fabio_niglio
                   </a>
                 </div>
               </div>
@@ -153,7 +160,9 @@ export default function Contact() {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-magicPurple via-electricBlue to-magicalGreen rounded-xl blur opacity-20"></div>
               <div className="relative bg-black/80 backdrop-blur-sm p-8 rounded-xl border border-white/10">
-                <h3 className="text-2xl font-bold mb-6 text-white">Send a Message</h3>
+                <h3 className="text-2xl font-bold mb-6 text-white">
+                  Send a Message
+                </h3>
 
                 {isSubmitted ? (
                   <motion.div
@@ -166,7 +175,10 @@ export default function Contact() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-300 mb-1"
+                      >
                         Name
                       </label>
                       <Input
@@ -180,7 +192,10 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-300 mb-1"
+                      >
                         Email
                       </label>
                       <Input
@@ -195,7 +210,10 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-gray-300 mb-1"
+                      >
                         Message
                       </label>
                       <Textarea
@@ -252,6 +270,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

@@ -4,18 +4,29 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const skills = [
-  { name: "React", level: 90, color: "bg-purple-500" },
-  { name: "Three.js", level: 85, color: "bg-blue-500" },
+  // Core Web Development
   { name: "JavaScript", level: 95, color: "bg-green-500" },
-  { name: "TypeScript", level: 80, color: "bg-purple-500" },
-  { name: "CSS/SCSS", level: 90, color: "bg-blue-500" },
-  { name: "WebGL", level: 75, color: "bg-green-500" },
+  { name: "React", level: 90, color: "bg-purple-500" },
   { name: "Next.js", level: 85, color: "bg-purple-500" },
-  { name: "GSAP", level: 80, color: "bg-blue-500" },
-  { name: "Framer Motion", level: 85, color: "bg-green-500" },
+  { name: "Node.js", level: 85, color: "bg-green-500" },
+  { name: "TypeScript", level: 85, color: "bg-blue-500" },
+
+  // UI & Design
   { name: "Tailwind CSS", level: 90, color: "bg-purple-500" },
-  { name: "UI/UX Design", level: 80, color: "bg-blue-500" },
-  { name: "Responsive Design", level: 95, color: "bg-green-500" },
+  { name: "Framer Motion", level: 85, color: "bg-green-500" },
+
+  // Salesforce & CRM
+  { name: "Salesforce", level: 95, color: "bg-blue-500" },
+  { name: "Apex", level: 90, color: "bg-purple-500" },
+  { name: "LWC", level: 90, color: "bg-green-500" },
+
+  // Databases & APIs
+  { name: "MongoDB", level: 85, color: "bg-green-500" },
+  { name: "Supabase", level: 80, color: "bg-blue-500" },
+
+  // DevOps & Cloud
+  { name: "GitHub Actions", level: 85, color: "bg-purple-500" },
+  { name: "AWS", level: 80, color: "bg-blue-500" },
 ];
 
 export default function Skills() {
@@ -97,14 +108,14 @@ export default function Skills() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-magicPurple mb-2">
-                  5+
+                  10+
                 </div>
                 <div className="text-gray-300">Years Experience</div>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-electricBlue mb-2">
-                  30+
+                  20+
                 </div>
                 <div className="text-gray-300">Projects Completed</div>
               </div>

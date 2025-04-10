@@ -11,7 +11,7 @@ const experiences = [
     company: "beyonnex.io",
     period: "May 2024 – Dec 2024",
     description:
-      "Test Led multiple integration and automation projects including Salesforce–Kafka integration and Sales Cloud MVP setup. Built CI/CD pipelines with GitLab, implemented Salesforce CPQ, and automated document generation with Conga. Played a key role in scaling operations and team communication.",
+      "Led multiple integration and automation projects including Salesforce–Kafka integration and Sales Cloud MVP setup. Built CI/CD pipelines with GitLab, implemented Salesforce CPQ, and automated document generation with Conga. Played a key role in scaling operations and team communication.",
     skills: ["Salesforce", "Kafka", "Apex", "CPQ", "GitLab", "CI/CD", "Kotlin"],
   },
   {

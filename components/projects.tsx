@@ -34,7 +34,7 @@ const projects = [
   {
     title: "Project Tower Defense",
     description:
-      "A portfolio website with parallax effects and interactive elements.",
+      "Fortress Guardians: Orc Siege is a pixel-art-style tower defense game where you must strategically build defenses to protect your base from waves of incoming orcs. Players earn coins by defeating orcs and spend them to place defensive towers in critical locations along the path. Each wave becomes more intense, testing your strategic planning and resource management. If an orc reaches the end, you lose a heart — lose all your hearts, and it's game over.",
     image: "/images/tower-defense.png?height=600&width=800",
     tags: ["Javascript", "HTML", "CSS"],
     links: {

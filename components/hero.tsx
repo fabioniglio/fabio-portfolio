@@ -55,14 +55,14 @@ export default function Hero({ onExploreClick }: HeroProps) {
           className="text-center"
         >
           <motion.h2
-            className="text-xl md:text-2xl mb-4 text-magicPurple font-light tracking-wider parallax-element"
+            className="text-4xl md:text-10xl mb-4 text-magicPurple font-light tracking-wider parallax-element"
             data-depth="0.2"
           >
             Hello, I'm
           </motion.h2>
 
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glow-text magic-text parallax-element"
+            className="text-xl md:text-xl lg:text-8xl font-bold mb-12 mt-8 py-4 glow-text magic-text parallax-element"
             data-depth="0.1"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

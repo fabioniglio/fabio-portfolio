@@ -56,8 +56,8 @@ export default function About() {
                     <h3 className="text-xl font-bold mb-2">Developer</h3>
                     <p className="text-gray-400">
                       I craft clean, efficient code to bring creative ideas to
-                      life. Specializing in React, Three.js, and interactive web
-                      experiences.
+                      life. Specializing in Salesforce, React, Node, learning
+                      about Three.js, and interactive web experiences.
                     </p>
                   </div>
                 </div>
@@ -153,16 +153,16 @@ export default function About() {
         >
           <p className="text-lg text-gray-300 leading-relaxed">
             Full Stack Developer with over 10 years of experience, including 9
-            years building robust Salesforce solutions and 2+ years crafting
-            modern web applications with React, Node.js, and cloud platforms. I
-            thrive at the intersection of performance and creativity—whether
-            it's architecting scalable enterprise systems or designing playful
-            personal projects like a React-based e-learning platform or an
-            AI-powered quiz app. I'm fluent across the stack, with hands-on
-            experience in AWS, GitHub Actions, and GCP. Currently diving deeper
-            into Next.js, Supabase, MongoDB, and the Daily API—tools that help
-            me turn complex ideas into seamless, interactive experiences on the
-            web.
+            years building robust Salesforce solutions and 2+ years developing
+            my skills modern web applications with React, Node.js, and cloud
+            platforms. I thrive at the intersection of performance and
+            creativity—whether it's architecting scalable enterprise systems or
+            designing playful personal projects like a React-based e-learning
+            platform or an AI-powered quiz app. I'm fluent across the stack,
+            with hands-on experience in AWS, GitHub Actions, and GCP. Currently
+            diving deeper into Next.js, Supabase, MongoDB, OpenAi, Ai Agents and
+            the Daily API—tools that help me turn complex ideas into seamless,
+            interactive experiences on the web.
           </p>
         </motion.div>
       </motion.div>

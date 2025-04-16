@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [clicked, setClicked] = useState(false)
-  const [hidden, setHidden] = useState(true)
-  const [linkHovered, setLinkHovered] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [clicked, setClicked] = useState(false);
+  const [hidden, setHidden] = useState(true);
+  const [linkHovered, setLinkHovered] = useState(false);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-      setHidden(false)
-    }
+      setPosition({ x: e.clientX, y: e.clientY });
+      setHidden(false);
+    };
 
-    const handleMouseDown = () => setClicked(true)
-    const handleMouseUp = () => setClicked(false)
+    const handleMouseDown = () => setClicked(true);
+    const handleMouseUp = () => setClicked(false);
 
     const handleLinkHoverStart = (e: MouseEvent) => {
       if (
@@ -25,36 +25,36 @@ export default function CustomCursor() {
         (e.target as HTMLElement).closest("a") ||
         (e.target as HTMLElement).closest("button")
       ) {
-        setLinkHovered(true)
+        setLinkHovered(true);
       } else {
-        setLinkHovered(false)
+        setLinkHovered(false);
       }
-    }
+    };
 
     const handleMouseLeave = () => {
-      setHidden(true)
-    }
+      setHidden(true);
+    };
 
-    document.addEventListener("mousemove", updatePosition)
-    document.addEventListener("mousedown", handleMouseDown)
-    document.addEventListener("mouseup", handleMouseUp)
-    document.addEventListener("mouseover", handleLinkHoverStart)
-    document.addEventListener("mouseleave", handleMouseLeave)
+    document.addEventListener("mousemove", updatePosition);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("mouseover", handleLinkHoverStart);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     // Add cursor-none class to body
-    document.body.classList.add("cursor-none")
+    document.body.classList.add("cursor-none");
 
     return () => {
-      document.removeEventListener("mousemove", updatePosition)
-      document.removeEventListener("mousedown", handleMouseDown)
-      document.removeEventListener("mouseup", handleMouseUp)
-      document.removeEventListener("mouseover", handleLinkHoverStart)
-      document.removeEventListener("mouseleave", handleMouseLeave)
+      document.removeEventListener("mousemove", updatePosition);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mouseover", handleLinkHoverStart);
+      document.removeEventListener("mouseleave", handleMouseLeave);
 
       // Remove cursor-none class from body
-      document.body.classList.remove("cursor-none")
-    }
-  }, [])
+      document.body.classList.remove("cursor-none");
+    };
+  }, []);
 
   return (
     <>
@@ -152,6 +152,5 @@ export default function CustomCursor() {
         }}
       />
     </>
-  )
+  );
 }
-

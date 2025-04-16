@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -16,31 +17,13 @@ export default function Contact() {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("mnnpreol");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: "", email: "", message: "" });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
   };
 
   return (
@@ -164,7 +147,7 @@ export default function Contact() {
                   Send a Message
                 </h3>
 
-                {isSubmitted ? (
+                {state.succeeded ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -229,9 +212,9 @@ export default function Contact() {
                     <Button
                       type="submit"
                       className="w-full bg-gradient-to-r from-magicPurple to-electricBlue hover:shadow-lg hover:shadow-magicPurple/20 transition-all duration-300"
-                      disabled={isSubmitting}
+                      disabled={state.succeeded}
                     >
-                      {isSubmitting ? (
+                      {state.succeeded ? (
                         <span className="flex items-center">
                           <svg
                             className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"

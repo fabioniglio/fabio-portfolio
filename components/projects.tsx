@@ -1,67 +1,60 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
-import Image from "next/image"
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
-    title: "Enchanted Gallery",
-    description: "An immersive 3D art gallery with interactive exhibits and magical particle effects.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Three.js", "React", "WebGL", "GSAP"],
+    title: "Quiz Note",
+    description:
+      "Quiz Note is free and open source. You use it with your own API key which stored securely.",
+    image: "/images/note-quiz.png?height=600&width=800",
+    tags: ["Typpescript", "Javascript", "CSS", "HTML", "OpenAi"],
     links: {
       live: "https://example.com",
-      github: "https://github.com",
+      github: "https://github.com/fabioniglio/quiz-notes",
     },
   },
   {
-    title: "Mystic Dashboard",
-    description: "A data visualization dashboard with animated charts and a magical UI.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "D3.js", "Framer Motion", "TypeScript"],
+    title: "LearnLinx",
+    description:
+      "Overview Learnlinx is a cutting-edge Learning Management System (LMS) designed to revolutionize online education. Our platform provides a seamless and efficient learning experience, empowering educators and learners to engage, collaborate, and excel in their educational journey.",
+    image: "/images/learnlinx.png?height=600&width=800",
+    tags: ["React", "Daily.co", "MongoDB", "TypeScript"],
     links: {
-      live: "https://example.com",
-      github: "https://github.com",
+      live: "https://learnlinx2.netlify.app/",
+      github: "https://github.com/fabioniglio/learnlinx",
     },
   },
   {
-    title: "Arcane Portfolio",
-    description: "A portfolio website with parallax effects and interactive elements.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Next.js", "Tailwind CSS", "GSAP", "Framer Motion"],
+    title: "Project Tower Defense",
+    description:
+      "A portfolio website with parallax effects and interactive elements.",
+    image: "/images/tower-defense.png?height=600&width=800",
+    tags: ["Javascript", "HTML", "CSS"],
     links: {
-      live: "https://example.com",
-      github: "https://github.com",
+      live: "https://fabioniglio.github.io/project-game-tower-defense/",
+      github: "https://github.com/fabioniglio/project-game-tower-defense",
     },
   },
-  {
-    title: "Ethereal E-commerce",
-    description: "A magical shopping experience with animated product showcases.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "Redux", "Stripe", "Framer Motion"],
-    links: {
-      live: "https://example.com",
-      github: "https://github.com",
-    },
-  },
-]
+];
 
 export default function Projects() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const nextProject = () => {
-    setActiveIndex((prev) => (prev + 1) % projects.length)
-  }
+    setActiveIndex((prev) => (prev + 1) % projects.length);
+  };
 
   const prevProject = () => {
-    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length)
-  }
+    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -111,13 +104,20 @@ export default function Projects() {
                   <CardContent className="p-8 relative">
                     <div className="absolute -right-20 -top-20 w-40 h-40 bg-magicPurple/10 rounded-full blur-3xl" />
 
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">{projects[activeIndex].title}</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+                      {projects[activeIndex].title}
+                    </h3>
 
-                    <p className="text-gray-300 mb-6 text-lg">{projects[activeIndex].description}</p>
+                    <p className="text-gray-300 mb-6 text-lg">
+                      {projects[activeIndex].description}
+                    </p>
 
                     <div className="flex flex-wrap gap-2 mb-8">
                       {projects[activeIndex].tags.map((tag, idx) => (
-                        <Badge key={idx} className="bg-black/50 text-magicalGreen border border-magicalGreen/30">
+                        <Badge
+                          key={idx}
+                          className="bg-black/50 text-magicalGreen border border-magicalGreen/30"
+                        >
                           {tag}
                         </Badge>
                       ))}
@@ -128,7 +128,11 @@ export default function Projects() {
                         className="bg-gradient-to-r from-magicPurple to-electricBlue hover:shadow-lg hover:shadow-magicPurple/20 transition-all duration-300 group"
                         asChild
                       >
-                        <a href={projects[activeIndex].links.live} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={projects[activeIndex].links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Live Demo
                           <ExternalLink className="ml-2 h-4 w-4" />
                         </a>
@@ -139,7 +143,11 @@ export default function Projects() {
                         className="border-electricBlue/50 text-electricBlue hover:bg-electricBlue/10 transition-all duration-300"
                         asChild
                       >
-                        <a href={projects[activeIndex].links.github} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={projects[activeIndex].links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Source Code
                           <Github className="ml-2 h-4 w-4" />
                         </a>
@@ -188,6 +196,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

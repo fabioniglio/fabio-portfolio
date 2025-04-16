@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   title: "Fabio Niglio",
   description: "A magical and interactive portfolio website",
   generator: "v0.dev",
+  icons: {
+    icon: [{ url: "/iconFabio.png", type: "image/png" }],
+    apple: [{ url: "/iconFabio.png" }],
+  },
 };
 
 export default function RootLayout({

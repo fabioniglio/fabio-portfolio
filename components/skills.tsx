@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import CountUp from "react-countup";
 
 const skills = [
   // Core Web Development
@@ -108,21 +109,21 @@ export default function Skills() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-magicPurple mb-2">
-                  10+
+                  <CountUp end={10} duration={5} />+
                 </div>
                 <div className="text-gray-300">Years Experience</div>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-electricBlue mb-2">
-                  20+
+                  <CountUp end={20} duration={5} />+
                 </div>
                 <div className="text-gray-300">Projects Completed</div>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="text-4xl font-bold text-magicalGreen mb-2">
-                  15+
+                  <CountUp end={15} duration={5} />+
                 </div>
                 <div className="text-gray-300">Happy Clients</div>
               </div>

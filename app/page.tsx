@@ -1,31 +1,33 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
-import Hero from "@/components/hero"
-import About from "@/components/about"
-import Experience from "@/components/experience"
-import Projects from "@/components/projects"
-import Skills from "@/components/skills"
-import Contact from "@/components/contact"
-import CustomCursor from "@/components/custom-cursor"
-import BackToTop from "@/components/back-to-top"
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import Hero from "@/components/hero";
+import About from "@/components/about";
+import Experience from "@/components/experience";
+import Projects from "@/components/projects";
+import Skills from "@/components/skills";
+import Contact from "@/components/contact";
+import CustomCursor from "@/components/custom-cursor";
+import BackToTop from "@/components/back-to-top";
+import CustomCursorCanvas from "@/components/ui/custom-cursor-canvas";
 
 export default function Home() {
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const experienceRef = useRef<HTMLDivElement>(null)
-  const projectsRef = useRef<HTMLDivElement>(null)
-  const skillsRef = useRef<HTMLDivElement>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <main className="relative bg-black text-white min-h-screen overflow-hidden">
+      <CustomCursorCanvas />
       <CustomCursor />
 
       <Hero onExploreClick={() => scrollToSection(aboutRef)} />
@@ -82,6 +84,5 @@ export default function Home() {
 
       <BackToTop />
     </main>
-  )
+  );
 }
-

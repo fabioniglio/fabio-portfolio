@@ -20,20 +20,19 @@ export default function CustomCursorCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
-    const dpr = window.devicePixelRatio || 1;
 
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-    ctx.scale(dpr, dpr);
+    // ✅ Use CSS pixels directly (fixes Firefox offset issues)
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
 
-    let mouseX = 0;
-    let mouseY = 0;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
 
-    const createExplosionParticle = (x: number, y: number) => {
+    const createParticle = (x: number, y: number, explosion = false) => {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 4 + 2;
+      const speed = explosion ? Math.random() * 4 + 2 : Math.random() * 1.5;
       particles.push({
         x,
         y,
@@ -53,7 +52,7 @@ export default function CustomCursorCanvas() {
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `rgba(255,255,255,${(1 - dist / 60) * 0.2})`;
+        ctx.strokeStyle = `rgba(255,255,255,${(1 - dist / 60) * 0.1})`;
         ctx.stroke();
       }
     };
@@ -61,6 +60,19 @@ export default function CustomCursorCanvas() {
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Optional: draw debug dot to verify cursor sync
+      // ctx.beginPath();
+      // ctx.arc(mouseX, mouseY, 3, 0, Math.PI * 2);
+      // ctx.fillStyle = "red";
+      // ctx.fill();
+
+      // Draw central glowing dot
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+
+      // Draw all particles
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx;
@@ -80,6 +92,7 @@ export default function CustomCursorCanvas() {
         ctx.fillStyle = p.color.replace("1)", `${p.alpha})`);
         ctx.fill();
 
+        // Connect lines
         for (let j = i - 1; j >= 0; j--) {
           drawLineBetweenParticles(p, particles[j]);
         }
@@ -91,27 +104,31 @@ export default function CustomCursorCanvas() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
+      // Optional: create trailing particle (comment out to disable)
+      createParticle(mouseX, mouseY, false);
     };
 
     const handleClick = () => {
-      for (let i = 0; i < 15; i++) {
-        createExplosionParticle(mouseX, mouseY);
+      for (let i = 0; i < 20; i++) {
+        createParticle(mouseX, mouseY, true); // 💥 explosion
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mousedown", handleClick);
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
-    });
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
     render();
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleClick);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

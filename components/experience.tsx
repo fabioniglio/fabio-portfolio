@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const experiences = [
   {
@@ -71,6 +72,8 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const isMobile = useIsMobile();
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -82,89 +85,76 @@ export default function Experience() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section
-      ref={containerRef}
-      className="py-20 relative overflow-hidden bg-black/80"
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black z-0" />
+    <section className="relative py-20 bg-black/80 overflow-hidden">
+      <div
+        className={`container mx-auto relative ${isMobile ? "pl-6 pr-4" : ""}`}
+      >
+        {/* Vertical timeline line */}
+        <div className="absolute top-0 bottom-0 left-6 md:left-1/2 w-px bg-gradient-to-b from-magicPurple via-electricBlue to-magicalGreen transform md:-translate-x-1/2 z-0" />
 
-      <motion.div className="container relative z-10" style={{ opacity }}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 glow-text">
-            My <span className="magic-text">Experience</span>
-          </h2>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto text-gray-300">
-            A journey through my professional career and the magical experiences
-            I've created.
-          </p>
-        </motion.div>
+        {experiences.map((exp, index) => {
+          const isLeft = index % 2 === 0;
 
-        <div className="max-w-4xl mx-auto relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-magicPurple via-electricBlue to-magicalGreen transform md:-translate-x-1/2" />
+          return (
+            <div key={index} className="relative mb-20">
+              {/* Timeline Dot */}
+              <div className="absolute top-0 z-10 w-4 h-4 rounded-full bg-gradient-to-r from-magicPurple to-electricBlue glow left-0 -translate-x-1/2 md:left-1/2" />
 
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`relative mb-16 md:mb-24 ${
-                index % 2 === 0
-                  ? "md:pr-12 md:ml-auto md:mr-0"
-                  : "md:pl-12 md:mr-auto md:ml-0"
-              } md:w-1/2 w-full pl-12 pt-10`}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-0 md:left-0 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-magicPurple to-electricBlue glow transform md:translate-x-[-50%] z-10" />
-
-              {/* Timeline date bubble */}
+              {/* Date Bubble */}
               <div
-                className={`absolute top-0 left-6 md:left-0 ${
-                  index % 2 === 0 ? "md:-left-32" : "md:left-auto md:-right-32"
-                }`}
+                className={`absolute top-0 z-20 text-sm text-electricBlue bg-black/80 border border-electricBlue/30 px-4 py-1 rounded-full whitespace-nowrap
+                  ${
+                    isLeft
+                      ? "left-[3rem] md:left-1/2 md:-translate-x-[calc(100%+2rem)]"
+                      : "left-[3rem] md:left-1/2 md:translate-x-[2rem]"
+                  }`}
               >
-                <div className="bg-black/80 border border-electricBlue/30 px-4 py-1 rounded-full text-sm text-electricBlue">
-                  {exp.period}
-                </div>
+                {exp.period}
               </div>
 
-              <Card className="bg-black/50 border border-electricBlue/20 backdrop-blur-sm overflow-hidden group hover:shadow-lg hover:shadow-electricBlue/20 transition-all duration-500">
-                <CardContent className="p-6 relative">
-                  <div className="absolute -right-20 -top-20 w-40 h-40 bg-electricBlue/5 rounded-full blur-3xl group-hover:bg-electricBlue/10 transition-all duration-700" />
+              {/* Card */}
+              <div
+                className={`mt-10 md:w-1/2 w-full ${isMobile ? "pt-12" : ""} ${
+                  isLeft ? "md:pr-12 md:ml-auto" : "md:pl-12 md:mr-auto"
+                } pl-12`}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="bg-black/50 border border-electricBlue/20 backdrop-blur-sm overflow-hidden group hover:shadow-lg hover:shadow-electricBlue/20 transition-all duration-500">
+                    <CardContent className="p-6 relative">
+                      <div className="absolute -right-20 -top-20 w-40 h-40 bg-electricBlue/5 rounded-full blur-3xl group-hover:bg-electricBlue/10 transition-all duration-700" />
 
-                  <h3 className="text-xl font-bold mb-1 text-white">
-                    {exp.title}
-                  </h3>
-                  <h4 className="text-lg mb-4 text-electricBlue">
-                    {exp.company}
-                  </h4>
+                      <h3 className="text-xl font-bold mb-1 text-white">
+                        {exp.title}
+                      </h3>
+                      <h4 className="text-lg mb-4 text-electricBlue">
+                        {exp.company}
+                      </h4>
 
-                  <p className="text-gray-300 mb-4">{exp.description}</p>
+                      <p className="text-gray-300 mb-4">{exp.description}</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill, idx) => (
-                      <Badge
-                        key={idx}
-                        className="bg-black/50 text-electricBlue border border-electricBlue/30"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill, i) => (
+                          <Badge
+                            key={i}
+                            className="bg-black/50 text-electricBlue border border-electricBlue/30"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }

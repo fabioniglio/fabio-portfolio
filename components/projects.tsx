@@ -16,8 +16,8 @@ const projects = [
     image: "/images/note-quiz.png?height=600&width=800",
     tags: ["Typpescript", "Javascript", "CSS", "HTML", "OpenAi"],
     links: {
-      live: "https://example.com",
-      github: "https://github.com/fabioniglio/quiz-notes",
+      live: "https://noteninjaquiz.netlify.app/",
+      github: "https://github.com/fabioniglio/quiz-app",
     },
   },
   {
